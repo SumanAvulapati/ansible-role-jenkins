@@ -4,11 +4,13 @@
   vars:
     # jenkins_repo_url: https://pkg.jenkins.io/redhat-stable/jenkins.repo
     # jenkins_repo_key_url: https://pkg.jenkins.io/redhat-stable/jenkins.io.key
-    # jenkins_pkg_url: https://pkg.jenkins.io/redhat-stable
+    jenkins_pkg_url: https://pkg.jenkins.io/redhat-stable
     jenkins_version: "2.289.2"
-    jenkins_plugins: ['docker-plugin', 'google-kubernetes-engine','uno-choice', 'ansible', 'artifactory', 'blueocean', 'build-name-setter', 
-    'build-timeout', 'configuration-as-code', 'emailext-template', 'environment-script', 'greenballs', 'monitoring', 'rebuild', 'schedule-build', 
-    'ssh-slaves', 'tfs', 'workflow-aggregator', 'ws-cleanup', 'kubernetes', 'pipeline-maven', 'timestamper']
+    jenkins_plugins: ['ansible', 'blueocean', 'build-name-setter', 'build-timeout', 'configuration-as-code',  'monitoring', 'rebuild', 
+    'schedule-build', 'kubernetes', 'pipeline-maven', 'timestamper', 'docker-plugin', 'docker-workflow', 'google-kubernetes-engine', 
+    'greenballs', 'ssh-slaves', 'workflow-aggregator', 'ws-cleanup'] 
+    # Additional plugins
+    # 'tfs', 'uno-choice', 'artifactory', 'emailext-template', 'environment-script']
     java_packages:
       - java-11-openjdk
     jenkins_prefer_lts: true
