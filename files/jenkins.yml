@@ -1,0 +1,137 @@
+jenkins:
+  agentProtocols:
+  - "JNLP4-connect"
+  - "Ping"
+  authorizationStrategy:
+    roleBased:
+      roles:
+        global:
+          - name: "admin"
+            description: "Jenkins administrators"
+            permissions:
+              - "Overall/Read"
+              - "Overall/Administer"
+            assignments:
+              - "admin"
+              - "avul1234"
+              - "robin1"
+          - name: "readonly"
+            description: "Read-only users"
+            permissions:
+              - "Overall/Read"
+              - "Job/Read"
+            assignments:
+              - "authenticated"
+        items:
+          - name: "FolderA"
+            description: "Jobs in Folder A, but not the folder itself"
+            pattern: "A/.*"
+            permissions:
+              - "Job/Configure"
+              - "Job/Build"
+              - "Job/Delete"
+            assignments:
+              - "user1"
+              - "user2"
+          - name: "FolderB"
+            description: "Jobs in Folder B, but not the folder itself"
+            pattern: "B.*"
+            permissions:
+              - "Job/Configure"
+              - "Job/Build"
+            assignments:
+              - "user3"
+              - "user4"
+  crumbIssuer:
+    standard:
+      excludeClientIPFromCrumb: true
+  disableRememberMe: false
+  mode: NORMAL
+  numExecutors: 4
+  primaryView:
+    all:
+      name: "all"
+  quietPeriod: 5
+  scmCheckoutRetryCount: 0
+  securityRealm:
+    activeDirectory:
+      groupLookupStrategy: AUTO
+      startTls: true
+      domains:
+        - name: "private.com"
+          servers: "ADSERVER:3268"
+          tlsConfiguration: TRUST_ALL_CERTIFICATES
+  views:
+  - all:
+      name: "all"          
+tool:
+  git:
+    installations:
+    - home: "git"
+      name: "Default"
+  jdk:
+    installations:
+    - name: "Adopt-jdk8u212-b04"
+      properties:
+      - installSource:
+          installers:
+          - adoptOpenJdkInstaller:
+              id: "jdk8u212-b04"
+    - name: "Adopt-jdk-11.0.3+7"
+      properties:
+      - installSource:
+          installers:
+          - adoptOpenJdkInstaller:
+              id: "jdk-11.0.3+7"              
+  maven:
+    installations:
+    - name: "Maven-3.6.1"
+      properties:
+      - installSource:
+          installers:
+          - maven:
+              id: "3.6.1"
+  gradle:
+    installations:
+    - name: "Gradle-5.5.1"
+      properties:
+      - installSource:
+          installers:
+          - gradleInstaller:
+              id: "5.5.1"              
+  nodejs:
+    defaultProperties:
+    - installSource:
+        installers:
+        - nodeJSInstaller:
+            npmPackagesRefreshHours: 72
+    installations:
+    - name: "nodejs-10.16.0"
+      home: "/var/lib/jenkins/tools/nodejs-10.16.0"
+      properties:
+      - installSource:
+          installers:
+          - nodeJSInstaller:
+              id: "10.16.0"
+              npmPackagesRefreshHours: 72
+credentials:
+  system:
+    domainCredentials:
+      - domain :
+          name: "github.com"
+          description: "GitHub"    
+        credentials: 
+          - usernamePassword:
+              scope: GLOBAL
+              id: GITHUB
+              username: "GIT"
+              password: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+          - usernamePassword:
+              scope: GLOBAL
+              id: JenkinsArtifactoryCredential
+              username: jenkins
+              password: "aaaaaaaaaaaaaaaaaaa"
+          - string:
+              scope: GLOBAL
+              id: AnsibleVaultSecret
+              secret: aaaaaaaaaaaaaaaaaaa

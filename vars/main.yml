@@ -1,0 +1,2 @@
+---
+casc_jenkins_config_dir: "{{ jenkins_home }}/casc_configs" 
