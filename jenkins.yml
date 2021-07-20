@@ -10,7 +10,7 @@
     'build-timeout', 'configuration-as-code', 'emailext-template', 'environment-script', 'greenballs', 'monitoring', 'rebuild', 'schedule-build', 
     'ssh-slaves', 'tfs', 'workflow-aggregator', 'ws-cleanup', 'kubernetes', 'pipeline-maven', 'timestamper']
     java_packages:
-      - openjdk-11-jdk
+      - java-11-openjdk
     jenkins_prefer_lts: true
   
   roles:

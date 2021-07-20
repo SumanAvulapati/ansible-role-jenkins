@@ -1,5 +1,6 @@
 ---
-- src: geerlingguy.java
-- src: geerlingguy.jenkins
+## geerlinguy roles gets downloaded as dependencies from custom jenkins role
+# - src: geerlingguy.java
+# - src: geerlingguy.jenkins
 - src: https://github.com/SumanAvulapati/ansible-role-jenkins
   version: main
