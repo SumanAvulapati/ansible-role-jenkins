@@ -1,0 +1,5 @@
+---
+- name: restart jenkins
+  service: name=jenkins state=restarted
+  environment:
+    CASC_JENKINS_CONFIG: '{{ casc_jenkins_config_dir }}'

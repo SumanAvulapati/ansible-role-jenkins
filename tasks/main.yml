@@ -6,12 +6,4 @@
     group: "{{ jenkins_process_user }}"
     mode: 0600
 
-- name: restart jenkins service to pick casc changes
-  systemd:
-    state: restarted
-    daemon_reload: yes
-    name: jenkins
-  environment:
-    CASC_JENKINS_CONFIG: '{{ casc_jenkins_config_dir }}'
-
 - debug: msg="{{ lookup('env','CASC_JENKINS_CONFIG') }} is an environment variable"
