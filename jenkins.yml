@@ -6,9 +6,9 @@
     # jenkins_repo_key_url: https://pkg.jenkins.io/redhat-stable/jenkins.io.key
     jenkins_pkg_url: https://pkg.jenkins.io/redhat-stable
     jenkins_version: "2.289.2"
-    jenkins_plugins: ['ansible', 'blueocean', 'build-name-setter', 'build-timeout', 'configuration-as-code',  'monitoring', 'rebuild', 
-    'schedule-build', 'kubernetes', 'pipeline-maven', 'timestamper', 'docker-plugin', 'docker-workflow', 'google-kubernetes-engine', 
-    'greenballs', 'ssh-slaves', 'workflow-aggregator', 'ws-cleanup'] 
+    jenkins_plugins: ['ansible', 'build-name-setter', 'build-timeout', 'configuration-as-code',  'docker-plugin', 'docker-workflow', 
+    'google-kubernetes-engine', 'greenballs', 'kubernetes', 'monitoring', 'pipeline-maven', 'rebuild', 'schedule-build',  'ssh-slaves', 
+    'timestamper', 'workflow-aggregator', 'blueocean',  'ws-cleanup'] 
     # Additional plugins
     # 'tfs', 'uno-choice', 'artifactory', 'emailext-template', 'environment-script']
     java_packages:
@@ -16,8 +16,6 @@
     jenkins_prefer_lts: true
   
   roles:
-    - geerlingguy.java
-    - geerlingguy.jenkins
     - ansible-role-jenkins
 
   post_tasks:
